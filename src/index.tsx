@@ -11,9 +11,18 @@ export default async function main(c, db) {
         <h1 class="font-extrabold dark:text-white text-6xl py-8">Latest Blogs</h1>
         {/* create side scroll, hide scrollbar */}
         <div class="carousel w-full gap-4">
-          {(blogs.length > 0) ? blogs.map((blog) => {
+          {/* {(blogs.length > 0) ? blogs.map((blog) => {
             return <BlogCard img={blog.photo} avatarURL={blog.authorpic} title={blog.title} author={blog.author} />
-            }) : <p class="text-2xl text-gray-500 dark:text-gray-300">No blogs found 😔</p>}
+            }) : <p class="text-2xl text-gray-500 dark:text-gray-300">No blogs found 😔</p>} */}
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
           </div>
         <script code={BlogCode}></script>
       </div>

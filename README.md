@@ -1,15 +1,21 @@
-# blogit
+# Blogging Website, school project
 
-To install dependencies:
+Screenshots of the website:
+Dark mode:
 
-```bash
-bun install
-```
+![](https://ren.reeee.ee/5PRopc9rm.png)
+![](https://ren.reeee.ee/5PRoCvRK3.png)
+![](https://ren.reeee.ee/5PRoIUr79.png)
 
-To run:
+Light Mode:
+![](https://ren.reeee.ee/5PRoY4yMD.png)
+![](https://ren.reeee.ee/5PRo_twFV.png)
+![](https://ren.reeee.ee/5PRp7JwpN.png)
 
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v0.3.0. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Setup on Linux/WSL:
+1. Install Bun from https://bun.dev
+2. Install SurrealDB from https://surrealdb.com/
+3. Install git and clone this project
+4. Run `bun i`
+5. `surreal start --log trace --user root --pass root` for db starting
+6. `bun run nodemon` for starting the server :)
