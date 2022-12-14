@@ -1,0 +1,51 @@
+import Layout from "./components/Layout";
+let code = `function submitForm() {
+  const form = document.getElementById('login');
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData);
+  fetch('/api/getToken', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(function (res){return res.json()}).then(function(data){
+    console.log(data);
+    //save token to localstorage if successful
+    if (data.success) {
+      localStorage.setItem('token', data.token);
+      window.location.href = '/';
+    }
+    else{
+      alert('Failed to login:' + data.error);
+      //reload page
+      window.location.href = '/login';
+    }
+  });
+}`
+export default async function main(c) {
+
+  return c.html(
+    <Layout title="Login">
+      <div class="mx-auto container bg-slate-800 p-8 max-w-md rounded-md">
+      <h1 class="text-4xl text-white font-bold pb-8 text-center">Login</h1>
+      <form id="login" onsubmit="event.preventDefault(); submitForm();">
+        <p class="text-white font-semibold text-lg py-2">Email</p>
+        <input type="email" name="email" placeholder="Email" 
+        class="rounded-md bg-slate-900 p-4 text-white min-w-full focus:outline-none focus:border-indigo-700 focus:border" />
+        <p class="text-white font-semibold text-lg py-2">Password</p>
+        <input type="password" name="password" placeholder="Password"
+        class="rounded-md bg-slate-900 p-4 text-white min-w-full focus:outline-none focus:border-indigo-700 focus:border" />
+        <div class="mt-12">
+        <input type="submit" value="Login"
+        class="p-4 bg-indigo-600 text-white text-bold text-2xl rounded-md min-w-full hover:bg-indigo-700" />
+        </div>
+      </form>
+      </div>
+
+      <script>
+        {code}
+      </script>
+    </Layout>
+  )
+}
