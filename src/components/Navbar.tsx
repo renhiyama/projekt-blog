@@ -12,7 +12,6 @@ let code = `function logout(e){
   if (data.success) {
     let $ = document.querySelector.bind(document);
     let user = data.user;
-    $('#userAvatar').src = user.avatarURL;
     $('#username').innerText = user.username;
     $('#logg').innerText = 'Logout';
     $('#logg').onclick = logout;
@@ -34,17 +33,18 @@ export default function Navbar() {
         <div class="flex-none gap-2">
           <div class="dropdown dropdown-end">
             <label tabIndex={0} class="btn btn-ghost btn-circle avatar">
-              <div class="w-10 rounded-full">
-                <img id="userAvatar"
-                 src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortRound&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=ShirtVNeck&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light' />
+              <div class="w-10 rounded-full dark:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
+                  <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+                </svg>
               </div>
             </label>
-            <ul tabIndex={0} class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-slate-400 dark:bg-slate-600 rounded-box w-52 text-white">
-              <li class="hover:bg-slate-500 dark:hover:bg-slate-900">
+            <ul tabIndex={0} class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-slate-600 rounded-box w-52 text-white">
+              <li class="">
                 <p id="username">User</p>
               </li>
-              <li class="hidden hover:bg-slate-500 dark:hover:bg-slate-900" id="dash"><a to="/dash">Dashboard</a></li>
-              <li class="hover:bg-slate-500 dark:hover:bg-slate-900"><a id="logg" href="/login">Login</a></li>
+              <li class="hidden hover:bg-indigo-600 dark:hover:bg-indigo-700" id="dash"><a href="/dash">Dashboard</a></li>
+              <li class="hover:bg-indigo-600 dark:hover:bg-indigo-700"><a id="logg" href="/login">Login</a></li>
             </ul>
           </div>
         </div>

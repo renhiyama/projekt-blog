@@ -26,21 +26,18 @@ export default async function(c, db){
   }
   user = user[0].result[0];
   //get the data from the request body
-  let body, title, content, tags, date, photo;
-  //generate timestamp
-  date = new Date().toISOString();
+  let body, title, content, tags;
   try{
     body = await c.req.json();
     title = body.title;
     content = body.content;
-    tags = body.tags;
-    photo = body.photo;
+    tags = Array.from(new Set(body.tags.toLowerCase().split(" ").map(tag => tag.trim()).filter(tag => tag.length > 0)));
   }catch(e){
     return new Response(JSON.stringify({success: false, error: "Parse Error"}), {
       status: 400,
     });
   }
-  if(!title || !content || !tags || !date || !photo){
+  if(!title || !content || !tags){
     return new Response(JSON.stringify({success: false, error: "Missing data"}), {
       status: 400,
     });
@@ -49,11 +46,9 @@ export default async function(c, db){
     title,
     content,
     tags,
-    date,
-    photo,
     slug: generateID(title),
     author: user.username,
-    authorpic: user.avatarURL
+    image: Math.floor(Math.random() * 10)
     });
   return new Response(JSON.stringify({success: true, slug: blog.slug}), {
     status: 200,

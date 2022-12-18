@@ -37,21 +37,23 @@ export let BlogCode = `(async()=>{
 
 export default function BlogCard(props) {
   return (
-    <div class="card w-96 bg-base-100 dark:bg-slate-900 shadow-xl carousel-item relative">
-      <figure class="px-10 pt-10 w-full">
-        <img src={props.img || "https://placeimg.com/400/225/arch"} alt="Shoes" class="rounded-xl" />
+    <div class="card w-80 lg:w-96 bg-base-100 dark:bg-slate-900 shadow-xl carousel-item relative">
+      <figure class="w-full rounded-t-md">
+        <img src={`/images/${props.image}.jpg`} alt="Image" />
       </figure>
       <div class="card-body">
         <div class="flex">
           <div class="avatar">
             <div class="w-8 rounded-full">
-              <img src={props.avatarURL || "https://placeimg.com/192/192/people"} />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
+                  <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+                </svg>
             </div>
           </div>
           <p class="text-slate-600 dark:text-slate-300 my-auto pl-4"> By {props.author || "Author"}</p>
         </div>
         <h2 class="dark:text-white text-2xl pl-8 font-bold">{props.title || "Blog Title"}</h2>
-        <div class="card-actions">
+        <div class="card-actions mt-auto">
           <button class="my-auto text-pink-700" name="heart" filled="false">
             {/* heart button */}
             <svg
@@ -67,7 +69,7 @@ export default function BlogCard(props) {
               <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
             </svg>
           </button>
-          <a href={props.slug?`/blogs/${props.slug}`:"#"} class="rounded-md text-white text-semibold px-8 py-2 bg-indigo-600 hover:bg-indigo-700 ml-auto">View</a>
+          <a href={props.slug?`/blog/${props.slug}`:"#"} class="rounded-md text-white text-semibold px-8 py-2 bg-indigo-600 hover:bg-indigo-700 ml-auto">View</a>
         </div>
       </div>
     </div>
